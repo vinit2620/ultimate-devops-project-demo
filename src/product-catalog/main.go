@@ -309,7 +309,6 @@ func (p *productCatalog) checkProductFailure(ctx context.Context, id string) boo
 	return failureEnabled
 }
 
-// A new client connection is created for each request to the product catalog service. This is not optimal for performance, but it is done here for simplicity. In a real application, you would want to create a single client connection and reuse it for all requests.
 func createClient(ctx context.Context, svcAddr string) (*grpc.ClientConn, error) {
 	return grpc.DialContext(ctx, svcAddr,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
